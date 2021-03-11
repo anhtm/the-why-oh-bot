@@ -1,21 +1,19 @@
-const COMMANDS = require('./constants/commands.constant');
+const { COMMAND_NAMES, RESPONSES } = require('./constants');
 
 module.exports = {
   prefix: '!',
-  commands: [
-    {
-      name: COMMANDS.HEY,
-      description: 'Start a conversation with the bot',
-      execute: (message, args = []) => {
-        message.channel.send('Why?');
-      },
+  commands: Object.values(COMMAND_NAMES).map(cmdName => ({
+    name: cmdName,
+    execute: (message) => {
+      const executor = RESPONSES[cmdName];
+
+      if (typeof executor === 'function') {
+        message.channel.send(executor(message));
+      }
+
+      if (typeof executor === 'string') {
+        message.channel.send(executor);
+      }
     },
-    {
-      name: COMMANDS.QUIT,
-      description: 'Quit the conversation with the bot',
-      execute: (message, args = []) => {
-        message.channel.send('That was fun.');
-      },
-    },
-  ],
+  })),
 };
