@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "no-console": "off",
+    "no-tabs": ["error", {
+      "allowIndentationTabs": true
+    }],
+    "comma-dangle": ["error", "always-multiline"],
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
+}
