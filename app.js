@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Discord = require('discord.js');
 const commandsMap = require('./commands');
 const { messageHandler } = require('./handlers');
